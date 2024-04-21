@@ -55,10 +55,10 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="websiteBttnContainer flex justify-center align-center">
+        <div className="websiteBttnContainer pointer flex justify-center align-center">
           <div className="websiteBttn flex">
             <img src="/website.svg" alt="website icon" />
-            <a href={tokenInfo.website} target="_blank" rel="noreferrer">Website</a>
+            <a className="pointer" href={tokenInfo.website} target="_blank" rel="noreferrer">Website</a>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ function App() {
   }
   function renderTokenInfo() {
     return <div className="tokenInfo">
-      <div className="card">
+      <div className="card shadow-md">
         <div>
           <p className="key">TOTAL SUPPLY</p>
           <p className="value">{formatNumberWithApostrophes(tokenInfo.totalSupply)} {tokenInfo.symbol?.toUpperCase()}</p>
@@ -84,7 +84,12 @@ function App() {
     </div>;
   }
   function renderChart() {
-    return <>
+    return <div className="chart relative">
+      <div className="chartTitle absolute center">
+        <p className="title">HOLDERS</p>
+        <p className="sub1">The top 100 holders collectively own {(top100own*100).toFixed(2)}</p>
+        <p className="sub2">({formatNumberWithApostrophes(top100totalTokens)} {tokenInfo.symbol?.toUpperCase()})</p>
+      </div>
       <Chart
         chartType="PieChart"
         data={getChartData(holdersList, totalHolders, tokenInfo.totalSupply)}
@@ -92,7 +97,7 @@ function App() {
         width={"100%"}
         height={"400px"}
       />
-    </>;
+    </div>;
   }
   function renderTable() {
     const holders = holdersList.slice(0, 100);

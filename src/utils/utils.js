@@ -1,4 +1,7 @@
 export function formatNumberWithApostrophes(num) {
+  if (!num) {
+    return num;
+  }
   // Convert the number to a string
   let numStr = num.toString();
   // Split into integer and decimal parts
