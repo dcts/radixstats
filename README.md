@@ -16,8 +16,8 @@ firebase deploy hosting
 
 # ToDo List
 
-- [ ] integrate google fonts
-- [ ] integrate ociswap API call
+- [x] integrate google fonts
+- [x] integrate ociswap API call
 - [ ] integrate chart JS
 - [ ] set metatags and icons etc
 - [ ] all assets (images) integrated
