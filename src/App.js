@@ -87,7 +87,7 @@ function App() {
     return <div className="chart relative">
       <div className="chartTitle absolute center">
         <p className="title">HOLDERS</p>
-        <p className="sub1">The top 100 holders collectively own {(top100own*100).toFixed(2)}</p>
+        <p className="sub1">The top 100 holders collectively own {(top100own * 100).toFixed(2)}</p>
         <p className="sub2">({formatNumberWithApostrophes(top100totalTokens)} {tokenInfo.symbol?.toUpperCase()})</p>
       </div>
       <Chart
@@ -134,9 +134,9 @@ function App() {
   }
 
   function renderLoadingState() {
-    return <>
-      <h1>Loading...</h1>
-    </>
+    return <div className="narrowContainer">
+      <p style={{paddingTop: "20px"}}>Loading...</p>
+    </div>
   }
 
   function renderFakeChart() {
