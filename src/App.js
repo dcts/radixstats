@@ -87,7 +87,7 @@ function App() {
     return <div className="chart relative">
       <div className="chartTitle absolute center">
         <p className="title">HOLDERS</p>
-        <p className="sub1">The top 100 holders collectively own {(top100own * 100).toFixed(2)}</p>
+        <p className="sub1">The top 100 holders collectively own ~{(top100own * 100).toFixed(0)} %</p>
         <p className="sub2">({formatNumberWithApostrophes(top100totalTokens)} {tokenInfo.symbol?.toUpperCase()})</p>
       </div>
       <Chart
@@ -177,13 +177,13 @@ function App() {
           const icon = coin.icon_url;
           const name = coin.name;
           return <>
-            { icon ? 
-            (<div className="coinCard flex flex-wrap" onClick={() => handleClick(targetUrl)} key={indx}>
-              <div  style={{borderRadius: "50% !important"}}>
-                <img src={icon} alt="icon" width={40} height={40} style={{borderRadius: "50% !important"}}/>
-              </div>
-              <p>{name}</p>
-            </div>) : <></>}
+            {icon ?
+              (<div className="coinCard flex flex-wrap" onClick={() => handleClick(targetUrl)} key={indx}>
+                <div style={{ borderRadius: "50% !important" }}>
+                  <img src={icon} alt="icon" width={40} height={40} style={{ borderRadius: "50% !important" }} />
+                </div>
+                <p>{name}</p>
+              </div>) : <></>}
           </>
         })}
       </div>

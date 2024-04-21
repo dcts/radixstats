@@ -34,6 +34,9 @@ export function calculateTop100own(addresses, totalSupply) {
   const top100totalTokens = calculateTop100totalTokens(addresses);
   console.log({totalSupply, top100totalTokens});
   const maxTotalSupply = Math.max(totalSupplyComputed, totalSupply);
+  // console.log("{top100totalTokens, maxTotalSupply}");
+  // console.log({top100totalTokens, maxTotalSupply});
+  // console.log(top100totalTokens / maxTotalSupply);
   return top100totalTokens / maxTotalSupply;
 }
 
