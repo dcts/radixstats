@@ -54,7 +54,7 @@ function App() {
         height={"400px"}
       />
       {holdersList.slice(0, 100).map((obj, indx) => {
-        return <div className="flex asd" key={indx}>
+        return <div className="flex" key={indx}>
           <div className="truncate">{obj.account_id}</div>
           <div>{formatNumberWithApostrophes(obj.balance.toFixed(2))}</div>
         </div>
