@@ -83,7 +83,8 @@ function App() {
   return (
     <div>
       {isLoading ? renderLoadingState() : renderTokenInfo()}
-      {/* DO NOT REMOVE: this chart is unneccessary, but if you remove this line, the chart breaks */}
+      {/* DO NOT REMOVE: this chart is unneccessary */}
+      {/* but removal leads to breaking the chart history */}
       {renderFakeChart()}
     </div>
   );
