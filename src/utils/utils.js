@@ -10,10 +10,48 @@ export function formatNumberWithApostrophes(num) {
   // Insert apostrophes every three characters
   let formattedInt = [];
   for (let i = 0; i < reversedInt.length; i += 3) {
-      formattedInt.push(reversedInt.substr(i, 3));
+    formattedInt.push(reversedInt.substr(i, 3));
   }
   // Join chunks with apostrophes, reverse back to the original order
   formattedInt = formattedInt.join("'").split('').reverse().join('');
   // Concatenate with the decimal part if it exists
   return decimalPart ? formattedInt + '.' + decimalPart : formattedInt;
+}
+
+export const chartOptions = {
+  title: "",
+  legend: {
+    position: 'right', // or 'top', 'bottom', 'left' depending on your layout needs
+    maxLines: 20 // Set a high number to try and accommodate all items without pagination
+  },
+  colors: [
+    '#003057',
+    '#060F8F',
+    '#20E4FF',
+    '#015844',
+    '#00AB84',
+    '#21FFBE',
+    '#5F0A47',
+    '#CE0D98',
+    '#8A8FA4',
+  ]
+};
+
+export function getChartData(holdersList, totalHolders, totalSupply = 0) {
+  const nWhales = 8;
+  if (totalSupply === 0) {
+    totalSupply = holdersList.map(holder => holder.balance).reduce((a,b) => a + b, 0);
+  }
+  const data = [["Address", "Token Quantity"]];
+  holdersList.slice(0,nWhales).forEach(holder => {
+    data.push([
+      holder.account_id,
+      holder.balance
+    ]
+  )});
+  const balanceWhales = holdersList.slice(0,nWhales)
+    .map(holder => holder.balance || 0)
+    .reduce((a,b) => a + b, 0);
+  data.push([`Rest (${totalHolders - nWhales} Accounts)`, totalSupply - balanceWhales])
+  return data;
 }

@@ -18,7 +18,7 @@ firebase deploy hosting
 
 - [x] integrate google fonts
 - [x] integrate ociswap API call
-- [ ] integrate chart JS
+- [x] integrate chart JS
 - [x] set metatags and icons etc
 - [ ] all assets (images) integrated
 - [ ] state store using useContext
