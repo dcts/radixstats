@@ -51,13 +51,13 @@ function App() {
           <div className="badge">
             <p>{trunc(tokenInfo.address, 3, 6)}</p>
             <div className="flex justify-center align-center">
-              <img className="copyIcon" src="/copy-to-clipboard.svg" alt="copy icon"/>
+              <img className="copyIcon" src="/copy-to-clipboard.svg" alt="copy icon" />
             </div>
           </div>
         </div>
         <div className="h-full flex justify-center align-center">
           <div className="websiteBttn flex">
-            <img src="/website.svg" alt="website icon"/>
+            <img src="/website.svg" alt="website icon" />
             <a href={tokenInfo.website} target="_blank" rel="noreferrer">Website</a>
           </div>
         </div>
@@ -95,11 +95,11 @@ function App() {
     </>;
   }
   function renderTable() {
-    const holders = holdersList.slice(0,100);
+    const holders = holdersList.slice(0, 100);
     console.log(holders);
     return <>
       <div className="w-full ">
-        {holders.map(({account_id, balance}, indx) => {
+        {holders.map(({ account_id, balance }, indx) => {
           return <div className="flex w-full space-between" key={indx}>
             <p>{account_id}</p>
             <p>{balance.toFixed(2)}</p>
@@ -143,11 +143,15 @@ function App() {
   }
 
   function renderNavbar() {
-    return <div className="navbar w-full">
-      <div className="flex space-around w-full">
-        <div className="start">Logo</div>
-        <div className="mid">Search Bar</div>
-        <div className="end">End</div>
+    return <div className="navbar w-full align-center shadow-light">
+      <div className="flex space-around w-full h-full items-center">
+        <div className="start">
+          <img className="radix-dashboard-logo" src="/radix-dashboard.svg" alt="radix dashboard logo" />
+        </div>
+        {/* <div className="mid">Search Bar</div> */}
+        <div className="end">
+          <img className="menu" src="/menu.svg" alt="menu icon" />
+        </div>
       </div>
     </div>
   }
