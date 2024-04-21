@@ -31,6 +31,21 @@
   text-overflow: ellipsis;
 }
 
+
+a:link { 
+  text-decoration: none; 
+} 
+a:visited { 
+  text-decoration: none; 
+} 
+a:hover { 
+  text-decoration: none; 
+} 
+a:active { 
+  text-decoration: none; 
+}
+
+
 #reactgooglegraph-2 {
   text {
     font-family: "IBM Plex Sans", sans-serif !important;
@@ -85,8 +100,31 @@
   padding-right: 16px;
 
 }
+.tokenHeader .description {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 .tokenHeader .badge p {
   width: 75px;
   padding-right: 0;
   padding-left: 0;
+}
+.tokenHeader .websiteBttn {
+  background-color: #003057;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+} 
+.tokenHeader .websiteBttn img {
+  padding-right: 6px;
+}
+.tokenHeader .websiteBttn a,
+.tokenHeader .websiteBttn a:hover,
+.tokenHeader .websiteBttn a:active {
+  all: all;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  line-height: 16px !important;
+  color: white;
+  text-decoration: none;
 }

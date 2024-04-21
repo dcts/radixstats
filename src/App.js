@@ -55,9 +55,14 @@ function App() {
             </div>
           </div>
         </div>
-        <div>WEBSITE</div>
+        <div className="h-full flex justify-center align-center">
+          <div className="websiteBttn flex">
+            <img src="/website.svg" alt="website icon"/>
+            <a href={tokenInfo.website} target="_blank" rel="noreferrer">Website</a>
+          </div>
+        </div>
       </div>
-      <div>{tokenInfo.description}</div>
+      <div className="description">{tokenInfo.description}</div>
     </div>;
   }
   function renderTokenInfo() {
