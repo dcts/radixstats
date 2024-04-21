@@ -36,9 +36,31 @@ function App() {
     loadData();
   }, []);
 
-  // function renderTokenInfo() {
-  //   return 
-  // }
+  function renderTokenInfo() {
+    return <>
+      <h1>TOKEN xxxYYYzzz?</h1>
+      Total Holders: {totalHolders}
+      <p>Coin: {tokenInfo.name}</p>
+      <p>description: {tokenInfo.description}</p>
+      <p>address: {tokenInfo.address}</p>
+      <p>iconUrl: {tokenInfo.iconUrl}</p>
+      <p>website: {tokenInfo.website}</p>
+      <img src={tokenInfo.iconUrl} alt="token icon" width={80} />
+      <Chart
+        chartType="PieChart"
+        data={getChartData(holdersList, totalHolders, tokenInfo.totalSupply)}
+        options={chartOptions}
+        width={"100%"}
+        height={"400px"}
+      />
+      {holdersList.slice(0, 100).map((obj, indx) => {
+        return <div className="flex asd" key={indx}>
+          <div className="truncate">{obj.account_id}</div>
+          <div>{formatNumberWithApostrophes(obj.balance.toFixed(2))}</div>
+        </div>
+      })}
+    </>
+  }
 
   function renderLoadingState() {
     return <>
@@ -46,31 +68,23 @@ function App() {
     </>
   }
 
+  function renderFakeChart() {
+    return <div style={{opacity: 0, visibility: "hidden"}}>
+        <Chart
+        chartType="PieChart"
+        data={[["Account", "Balance"], ["Adam", 12], ["Alice", 124]]}
+        options={chartOptions}
+        width={"100%"}
+        height={"400px"}
+      />
+    </div>
+  }
+
   return (
     <div>
-      {isLoading ? renderLoadingState() : <>
-        <h1>TOKEN xxxYYYzzz?</h1>
-        Total Holders: {totalHolders}
-        <p>Coin: {tokenInfo.name}</p>
-        <p>description: {tokenInfo.description}</p>
-        <p>address: {tokenInfo.address}</p>
-        <p>iconUrl: {tokenInfo.iconUrl}</p>
-        <p>website: {tokenInfo.website}</p>
-        <img src={tokenInfo.iconUrl} alt="token icon" width={80} />
-        <Chart
-          chartType="PieChart"
-          data={getChartData(holdersList, totalHolders, tokenInfo.totalSupply)}
-          options={chartOptions}
-          width={"100%"}
-          height={"400px"}
-        />
-        {holdersList.slice(0, 100).map((obj, indx) => {
-          return <div className="flex asd" key={indx}>
-            <div className="truncate">{obj.account_id}</div>
-            <div>{formatNumberWithApostrophes(obj.balance.toFixed(2))}</div>
-          </div>
-        })}
-      </>}
+      {isLoading ? renderLoadingState() : renderTokenInfo()}
+      {/* DO NOT REMOVE: this chart is unneccessary, but if you remove this line, the chart breaks */}
+      {renderFakeChart()}
     </div>
   );
 }
