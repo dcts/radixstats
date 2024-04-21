@@ -71,13 +71,6 @@ function App() {
           </div>
         })}
       </>}
-      <Chart
-        chartType="PieChart"
-        data={getChartData(holdersList, totalHolders, tokenInfo.totalSupply)}
-        options={chartOptions}
-        width={"100%"}
-        height={"400px"}
-      />
     </div>
   );
 }
