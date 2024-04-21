@@ -130,6 +130,9 @@ a:active {
   padding-right: 0;
   padding-left: 0;
 }
+.tokenHeader .websiteBttnContainer {
+  height: 68px;
+}
 .tokenHeader .websiteBttn {
   background-color: #003057;
   color: white;
@@ -148,4 +151,31 @@ a:active {
   line-height: 16px !important;
   color: white;
   text-decoration: none;
+}
+
+.tokenInfo .card {
+  background-color: white;
+  padding: 20px 26px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+.tokenInfo .card .key {
+  font-size: 16px;
+  color: #8A8FA4;
+  font-weight: 500;
+}
+.tokenInfo .card .value {
+  font-size: 16px;
+  color: #003057;
+  font-weight: bold;
+}
+
+.tokenInfo .card > div {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 6px;
+  padding-top: 6px;
+}
+.tokenInfo .card p {
+  margin: 0;
 }

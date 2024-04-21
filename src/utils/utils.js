@@ -24,6 +24,7 @@ export const chartOptions = {
     position: 'right', // or 'top', 'bottom', 'left' depending on your layout needs
     maxLines: 20 // Set a high number to try and accommodate all items without pagination
   },
+  backgroundColor: '#F4F5F9', // Setting background color here
   colors: [
     '#003057',
     '#060F8F',

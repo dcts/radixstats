@@ -55,7 +55,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="h-full flex justify-center align-center">
+        <div className="websiteBttnContainer flex justify-center align-center">
           <div className="websiteBttn flex">
             <img src="/website.svg" alt="website icon" />
             <a href={tokenInfo.website} target="_blank" rel="noreferrer">Website</a>
@@ -69,16 +69,16 @@ function App() {
     return <div className="tokenInfo">
       <div className="card">
         <div>
-          <p>TOTAL SUPPLY</p>
-          <p>{tokenInfo.totalSupply} {tokenInfo.symbol?.toUpperCase()}</p>
+          <p className="key">TOTAL SUPPLY</p>
+          <p className="value">{formatNumberWithApostrophes(tokenInfo.totalSupply)} {tokenInfo.symbol?.toUpperCase()}</p>
         </div>
         <div>
-          <p>MARKET CAP</p>
-          <p>{tokenInfo.marketcap} {"USD"}</p>
+          <p className="key">MARKET CAP</p>
+          <p className="value">{formatNumberWithApostrophes(tokenInfo.marketcap)} {"USD"}</p>
         </div>
         <div>
-          <p>HOLDERS</p>
-          <p>{totalHolders}</p>
+          <p className="key">HOLDERS</p>
+          <p className="value">{totalHolders}</p>
         </div>
       </div>
     </div>;
