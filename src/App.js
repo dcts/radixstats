@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 import { formatNumberWithApostrophes, chartOptions, getChartData } from "./utils/utils";
-import { fetchTokenInfo, fetchTokenHolders, dexterAddress } from "./utils/fetchData";
+import { fetchTokenInfo, fetchTokenHolders, dexterAddress, calculateTop100own, calculateTop100totalTokens } from "./utils/fetchData";
 
 import { Chart } from "react-google-charts";
 
@@ -19,6 +19,8 @@ function App() {
   const [holdersList, setHoldersList] = useState([]);
   const [totalHolders, setTotalHolders] = useState(0);
   const [tokenInfo, setTokenInfo] = useState({});
+  const [top100own, setTop100own] = useState(0);
+  const [top100totalTokens, setTop100totalTokens] = useState(0);
 
   useEffect(() => {
     async function loadData() {
@@ -30,6 +32,8 @@ function App() {
       ]);
       setHoldersList(tokenHoldersResult.addresses);
       setTotalHolders(tokenHoldersResult.holders);
+      setTop100own(calculateTop100own(tokenHoldersResult.addresses, tokenInfo.totalSupply));
+      setTop100totalTokens(calculateTop100totalTokens(tokenHoldersResult.addresses));
       setTokenInfo(tokenInfoResult);
       setIsLoading(false);
     }
@@ -40,6 +44,7 @@ function App() {
     return <>
       <h1>TOKEN xxxYYYzzz?</h1>
       Total Holders: {totalHolders}
+      <p>{top100own} {top100totalTokens}</p>
       <p>Coin: {tokenInfo.name}</p>
       <p>description: {tokenInfo.description}</p>
       <p>address: {tokenInfo.address}</p>
@@ -69,7 +74,7 @@ function App() {
   }
 
   function renderFakeChart() {
-    return <div style={{opacity: 0, visibility: "hidden"}}>
+    return <div style={{ opacity: 0, visibility: "hidden" }}>
       <Chart
         chartType="PieChart"
         data={[["Account", "Balance"], ["Adam", 12], ["Alice", 124]]}

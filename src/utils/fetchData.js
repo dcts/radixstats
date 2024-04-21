@@ -25,4 +25,18 @@ export async function fetchTokenHolders(resource = dexterAddress, limit = 1000) 
   };
 }
 
+export function calculateTop100own(addresses, totalSupply) {
+  const totalSupplyComputed = addresses.map(obj => obj.balance).reduce((a,b) => a + b, 0);
+  const top100totalTokens = calculateTop100totalTokens(addresses);
+  console.log({totalSupply, top100totalTokens});
+  const maxTotalSupply = Math.max(totalSupplyComputed, totalSupply);
+  return top100totalTokens / maxTotalSupply;
+}
 
+export function calculateTop100totalTokens(addresses) {
+  let top100totalTokens = 0;
+  addresses.slice(0,100).forEach(holder => {
+    top100totalTokens += holder.balance;
+  })
+  return top100totalTokens;
+} 

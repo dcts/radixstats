@@ -21,10 +21,8 @@ firebase deploy hosting
 - [x] integrate chart JS
 - [x] set metatags and icons etc
 - [x] all assets (images) integrated
-- [ ] state store using useContext
-- [ ] css zero, reset everything
-- [ ] basic component structure (single file setup)
 - [ ] all calculations and state defined (09:00)
+- [ ] basic component structure (single file setup)
 - [ ] all pretty on desktop (12:00)
 - [ ] implement responsiveness (14:00)
 - [ ] presentation (15:00)
