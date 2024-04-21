@@ -4,6 +4,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.round {
+  border-radius: 50% !important;
+}
 .w-full {
   width: 100%;
 }
@@ -265,4 +268,22 @@ a:active {
 .table .row .percentage {
   width: 20%;
   text-align: right;
+}
+
+
+
+.coinCard {
+  background-color: white;
+  max-width: 300px;
+  margin: auto;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  cursor: pointer;
+  flex-wrap: wrap;
+}
+.coinCard p {
+  margin: 0;
+  margin-left: 14px;
 }

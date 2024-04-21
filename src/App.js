@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 import { formatNumberWithApostrophes, chartOptions, getChartData, trunc } from "./utils/utils";
-import { fetchTokenInfo, fetchTokenHolders, dexterAddress, calculateTop100own, calculateTop100totalTokens } from "./utils/fetchData";
+import { fetchTokenInfo, fetchTokenHolders, dexterAddress, calculateTop100own, calculateTop100totalTokens, coinsData } from "./utils/fetchData";
 
 import { Chart } from "react-google-charts";
 
@@ -101,7 +101,6 @@ function App() {
   }
   function renderTable() {
     const holders = holdersList.slice(0, 100);
-    console.log(holders);
     return <div className="table">
       <div className="w-full ">
         {holders.map(({ account_id, balance }, indx) => {
@@ -135,7 +134,7 @@ function App() {
 
   function renderLoadingState() {
     return <div className="narrowContainer">
-      <p style={{paddingTop: "20px"}}>Loading...</p>
+      <p style={{ paddingTop: "20px" }}>Loading...</p>
     </div>
   }
 
@@ -165,6 +164,31 @@ function App() {
     </div>
   }
 
+  function renderTop100Coins() {
+    console.log(coinsData);
+    const handleClick = (targetUrl) => {
+      window.open(targetUrl, '_blank');
+    }
+    return (
+      <div className="narrowContainer">
+        {coinsData.map((coin, indx) => {
+          const address = coin.address;
+          const targetUrl = `http://${window.location.host}?resource=${address}`;
+          const icon = coin.icon_url;
+          const name = coin.name;
+          return <>
+            <div className="coinCard flex" onClick={() => handleClick(targetUrl)} key={indx}>
+              <div  style={{borderRadius: "50% !important"}}>
+                <img src={icon} alt="icon" width={40} height={40} style={{borderRadius: "50% !important"}}/>
+              </div>
+              <p>{name}</p>
+            </div>
+          </>
+        })}
+      </div>
+    );
+  }
+
   return (
     <div>
       {renderNavbar()}
@@ -173,6 +197,7 @@ function App() {
       {/* DO NOT REMOVE: this chart is unneccessary */}
       {/* but removal leads to breaking the chart history */}
       {renderFakeChart()}
+      {isLoading ? <></> : renderTop100Coins()}
     </div>
   );
 }

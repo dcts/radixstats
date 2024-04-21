@@ -1,5 +1,8 @@
 import axios from "axios";
 
+import coinsJSON from "./coins.json";
+
+export const coinsData = coinsJSON;
 export const dexterAddress = "resource_rdx1tkktjr0ew96se7wpsqxxvhp2vr67jc8anq04r5xkgxq3f0rg9pcj0c";
 export const ociswapAddress = "resource_rdx1t52pvtk5wfhltchwh3rkzls2x0r98fw9cjhpyrf3vsykhkuwrf7jg8";
 export const earlyAddress = "resource_rdx1t5xv44c0u99z096q00mv74emwmxwjw26m98lwlzq6ddlpe9f5cuc7s";
