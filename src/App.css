@@ -4,9 +4,20 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.w-full {
+  width: 100%;
+}
 .flex {
   display: flex;
+}
+.space-around {
+  justify-content:space-between;
+}
+.space-between {
+  justify-content: space-between;
+}
+.space-evenly {
+  justify-content: space-evenly;
 }
 
 #reactgooglegraph-2 {
@@ -14,4 +25,46 @@
     font-family: "IBM Plex Sans", sans-serif !important;
     font-weight: 400 !important;
   }
+}
+
+.navbar .start,
+.navbar .end {
+  width: 250px;
+}
+.navbar .end {
+  text-align: right;
+}
+
+
+.narrowContainer {
+  max-width: 768px;
+  margin: auto;
+}
+
+
+.badge {
+  padding: 0;
+  background-color: #E2E5ED;
+  color: #003057;
+  font-weight: 600;
+  height: 30px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+}
+.badge p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 6px;
+
+}
+.tokenHeader .badge {
+  max-width: 120px;
+  font-size: 12px;
+}
+
+.tokenHeader .badge p {
+  max-width: 60px;
 }

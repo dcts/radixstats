@@ -40,17 +40,43 @@ function App() {
     loadData();
   }, []);
 
+  function renderTokenHeader() {
+    return <div className="tokenHeader">
+      <div className="flex space-between">
+        <div className="flex w-full">
+          <div>
+            <img src={tokenInfo.iconUrl} width={60} alt="token icon" />
+          </div>
+          <div>{tokenInfo.name} ({tokenInfo.symbol?.toUpperCase()})</div>
+          <div className="badge">
+            <p>{tokenInfo.address}</p>
+          </div>
+        </div>
+        <div>WEBSITE</div>
+      </div>
+      <div>{tokenInfo.description}</div>
+    </div>;
+  }
   function renderTokenInfo() {
+    return <div className="tokenInfo">
+      <div className="card">
+        <div>
+          <p>TOTAL SUPPLY</p>
+          <p>{tokenInfo.totalSupply} {tokenInfo.symbol?.toUpperCase()}</p>
+        </div>
+        <div>
+          <p>MARKET CAP</p>
+          <p>{tokenInfo.marketcap} {"USD"}</p>
+        </div>
+        <div>
+          <p>HOLDERS</p>
+          <p>{totalHolders}</p>
+        </div>
+      </div>
+    </div>;
+  }
+  function renderChart() {
     return <>
-      <h1>TOKEN xxxYYYzzz?</h1>
-      Total Holders: {totalHolders}
-      <p>{top100own} {top100totalTokens}</p>
-      <p>Coin: {tokenInfo.name}</p>
-      <p>description: {tokenInfo.description}</p>
-      <p>address: {tokenInfo.address}</p>
-      <p>iconUrl: {tokenInfo.iconUrl}</p>
-      <p>website: {tokenInfo.website}</p>
-      <img src={tokenInfo.iconUrl} alt="token icon" width={80} />
       <Chart
         chartType="PieChart"
         data={getChartData(holdersList, totalHolders, tokenInfo.totalSupply)}
@@ -58,12 +84,35 @@ function App() {
         width={"100%"}
         height={"400px"}
       />
-      {holdersList.slice(0, 100).map((obj, indx) => {
-        return <div className="flex" key={indx}>
-          <div className="truncate">{obj.account_id}</div>
-          <div>{formatNumberWithApostrophes(obj.balance.toFixed(2))}</div>
-        </div>
-      })}
+    </>;
+  }
+  function renderTable() {
+    const holders = holdersList.slice(0,100);
+    console.log(holders);
+    return <>
+      <div className="w-full ">
+        {holders.map(({account_id, balance}, indx) => {
+          return <div className="flex w-full space-between" key={indx}>
+            <p>{account_id}</p>
+            <p>{balance.toFixed(2)}</p>
+          </div>
+        })}
+      </div>
+    </>;
+  }
+  function renderFooter() {
+    return <></>;
+  }
+
+  function renderPage() {
+    return <>
+      <div className="narrowContainer">
+        {renderTokenHeader()}
+        {renderTokenInfo()}
+        {renderChart()}
+        {renderTable()}
+        {renderFooter()}
+      </div>
     </>
   }
 
@@ -85,9 +134,21 @@ function App() {
     </div>
   }
 
+  function renderNavbar() {
+    return <div className="navbar w-full">
+      <div className="flex space-around w-full">
+        <div className="start">Logo</div>
+        <div className="mid">Search Bar</div>
+        <div className="end">End</div>
+      </div>
+    </div>
+  }
+
   return (
     <div>
-      {isLoading ? renderLoadingState() : renderTokenInfo()}
+      {renderNavbar()}
+
+      {isLoading ? renderLoadingState() : renderPage()}
       {/* DO NOT REMOVE: this chart is unneccessary */}
       {/* but removal leads to breaking the chart history */}
       {renderFakeChart()}

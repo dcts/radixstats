@@ -14,6 +14,7 @@ export async function fetchTokenInfo(resource = dexterAddress) {
     website: result.data.info_url,
     address: result.data.address,
     totalSupply: result.data.supply?.total,
+    marketcap: Math.round(result.data.market_cap?.circulating?.usd?.now), 
   }
 }
 
