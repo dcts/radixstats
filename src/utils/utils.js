@@ -55,3 +55,12 @@ export function getChartData(holdersList, totalHolders, totalSupply = 0) {
   data.push([`Rest (${totalHolders - nWhales} Accounts)`, totalSupply - balanceWhales])
   return data;
 }
+
+export function trunc(str, takeFromStart, takeFromEnd) {
+  if (typeof str !== 'string' || str.length < takeFromStart) {
+    return "";
+  }
+  const firstThree = str.substring(0, 3);
+  const lastN = str.substring(str.length - takeFromEnd);
+  return `${firstThree}...${lastN}`;
+}

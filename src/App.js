@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
-import { formatNumberWithApostrophes, chartOptions, getChartData } from "./utils/utils";
+import { formatNumberWithApostrophes, chartOptions, getChartData, trunc } from "./utils/utils";
 import { fetchTokenInfo, fetchTokenHolders, dexterAddress, calculateTop100own, calculateTop100totalTokens } from "./utils/fetchData";
 
 import { Chart } from "react-google-charts";
@@ -43,13 +43,16 @@ function App() {
   function renderTokenHeader() {
     return <div className="tokenHeader">
       <div className="flex space-between">
-        <div className="flex w-full">
+        <div className="flex w-full items-center">
           <div>
-            <img src={tokenInfo.iconUrl} width={60} alt="token icon" />
+            <img className="tokenLogo" src={tokenInfo.iconUrl} width={64} alt="token icon" />
           </div>
-          <div>{tokenInfo.name} ({tokenInfo.symbol?.toUpperCase()})</div>
+          <div className="tokenName">{tokenInfo.name} ({tokenInfo.symbol?.toUpperCase()})</div>
           <div className="badge">
-            <p>{tokenInfo.address}</p>
+            <p>{trunc(tokenInfo.address, 3, 6)}</p>
+            <div className="flex justify-center align-center">
+              <img className="copyIcon" src="/copy-to-clipboard.svg" alt="copy icon"/>
+            </div>
           </div>
         </div>
         <div>WEBSITE</div>
