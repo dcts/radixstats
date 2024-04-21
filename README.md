@@ -20,7 +20,7 @@ firebase deploy hosting
 - [x] integrate ociswap API call
 - [x] integrate chart JS
 - [x] set metatags and icons etc
-- [ ] all assets (images) integrated
+- [x] all assets (images) integrated
 - [ ] state store using useContext
 - [ ] css zero, reset everything
 - [ ] basic component structure (single file setup)
