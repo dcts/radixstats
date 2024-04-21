@@ -70,7 +70,7 @@ function App() {
 
   function renderFakeChart() {
     return <div style={{opacity: 0, visibility: "hidden"}}>
-        <Chart
+      <Chart
         chartType="PieChart"
         data={[["Account", "Balance"], ["Adam", 12], ["Alice", 124]]}
         options={chartOptions}
