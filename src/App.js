@@ -1,7 +1,7 @@
-import {useEffect, useState} from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
+import { formatNumberWithApostrophes } from "./utils/utils";
 
 function getResource() {
   if (window) {
@@ -16,7 +16,6 @@ function App() {
 
   useEffect(() => {
     function loadTokenHolders() {
-      
       fetch(`https://gettokenholderscors-rvn75v2dcq-uc.a.run.app/?resource=${getResource()}`)
         .then(res => res.json())
         .then(data => {
@@ -27,17 +26,15 @@ function App() {
     loadTokenHolders();
   }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>TOKEN xxxYYYzzz?</h1>
-        Total Holders: {tokenHolders?.length}
-        {tokenHolders?.map(obj => {
-          return <div className="flex asd">
-            <div className="truncate">{obj.account_id}</div>
-            <div>{obj.balance}</div>
-          </div>
-        })}
-      </header>
+    <div>
+      <h1>TOKEN xxxYYYzzz?</h1>
+      Total Holders: {tokenHolders?.length}
+      {tokenHolders?.map(obj => {
+        return <div className="flex asd">
+          <div className="truncate">{obj.account_id}</div>
+          <div>{formatNumberWithApostrophes(obj.balance.toFixed(2))}</div>
+        </div>
+      })}
     </div>
   );
 }
