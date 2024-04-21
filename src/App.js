@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>TOKEN xYz?</h1>
+        <h1>TOKEN xxxYYYzzz?</h1>
         Total Holders: {tokenHolders?.length}
         {tokenHolders?.map(obj => {
           return <div className="flex asd">

@@ -23,8 +23,8 @@ firebase deploy hosting
 - [ ] all assets (images) integrated
 - [ ] state store using useContext
 - [ ] css zero, reset everything
-- [ ] basic component structure (all in one file)
-- [ ] all calculations 09:00
+- [ ] basic component structure (single file setup)
+- [ ] all calculations and state defined (09:00)
 - [ ] all pretty on desktop (12:00)
 - [ ] implement responsiveness (14:00)
 - [ ] presentation (15:00)
