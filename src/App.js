@@ -177,12 +177,13 @@ function App() {
           const icon = coin.icon_url;
           const name = coin.name;
           return <>
-            <div className="coinCard flex" onClick={() => handleClick(targetUrl)} key={indx}>
+            { icon ? 
+            (<div className="coinCard flex flex-wrap" onClick={() => handleClick(targetUrl)} key={indx}>
               <div  style={{borderRadius: "50% !important"}}>
                 <img src={icon} alt="icon" width={40} height={40} style={{borderRadius: "50% !important"}}/>
               </div>
               <p>{name}</p>
-            </div>
+            </div>) : <></>}
           </>
         })}
       </div>
