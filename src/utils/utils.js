@@ -64,7 +64,7 @@ export function trunc(str, takeFromStart, takeFromEnd) {
   if (typeof str !== 'string' || str.length < takeFromStart) {
     return "";
   }
-  const firstThree = str.substring(0, 3);
+  const firstThree = str.substring(0, takeFromStart);
   const lastN = str.substring(str.length - takeFromEnd);
   return `${firstThree}...${lastN}`;
 }

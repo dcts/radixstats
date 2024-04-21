@@ -102,16 +102,20 @@ function App() {
   function renderTable() {
     const holders = holdersList.slice(0, 100);
     console.log(holders);
-    return <>
+    return <div className="table">
       <div className="w-full ">
         {holders.map(({ account_id, balance }, indx) => {
-          return <div className="flex w-full space-between" key={indx}>
-            <p>{account_id}</p>
-            <p>{balance.toFixed(2)}</p>
+          return <div className="flex row" key={indx}>
+            <p className="rank">{indx + 1}</p>
+            <a className="remove-link-formatting account" target="_blank" href={`https://dashboard.radixdlt.com/account/${account_id}`}>
+              <p className="">{trunc(account_id, 10, 20)}</p>
+            </a>
+            <p className="amount">{formatNumberWithApostrophes(balance.toFixed(0))} {tokenInfo.symbol?.toUpperCase()}</p>
+            <p className="percentage">{(balance / tokenInfo.totalSupply * 100).toFixed(2)} %</p>
           </div>
         })}
       </div>
-    </>;
+    </div>;
   }
   function renderFooter() {
     return <></>;

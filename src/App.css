@@ -97,6 +97,14 @@ a:active {
   padding-left: 20px;
 }
 
+.remove-link-formatting  {
+  color: #003057;
+}
+
+.remove-link-formatting:hover {
+  /* text-decoration: underline; */
+  /* font-weight: bold; */
+}
 
 .narrowContainer {
   max-width: 768px;
@@ -225,4 +233,36 @@ a:active {
   font-size: 16px;
   font-weight: 400;
   margin: 0;
+}
+
+
+
+.table p {
+  margin: 0;
+}
+.table .row {
+  padding: 16px 24px;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  max-width: 786px;
+}
+
+.table .row p {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.table .row .rank {
+  padding-right: 20px;
+}
+.table .row .account {
+  width: 60%;
+}
+.table .row .amount {
+  width: 20%;
+  text-align: right;
+}
+.table .row .percentage {
+  width: 20%;
+  text-align: right;
 }
